@@ -11,5 +11,28 @@
     </h:head>
     <h:body>
     	Bienvenido al sistema...
+    <h:dataTable id="dtbEmpleados" var= "empleado" value="#{principalController.empleados}" headerClass="headerTable" rowClasses="rowTable rowTableLine">
+    	<h:column>
+    		<f:facet name="header">Nombre</f:facet>
+    		<h:outputText value="#{empleado.nombre}" /> 
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Apellido Paterno</f:facet> 
+    		<h:outputText value="#{empleado.apellidoPaterno}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Apellido Materno</f:facet>
+    		<h:outputText value="#{empleado.apellidoMaterno}" /> 
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Puesto</f:facet> 
+    		<h:outputText value="#{empleado.puesto}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Estatus</f:facet>
+    		<h:outputText value="ACTIVO" rendered="#{empleado.status}" />
+    		<h:outputText value="INACTIVO" rendered="#{!empleado.status}"/> 
+    	</h:column>
+    </h:dataTable>
     </h:body>
 </html>
