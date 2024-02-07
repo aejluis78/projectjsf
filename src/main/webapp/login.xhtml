@@ -3,25 +3,38 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 	
     <h:head>
         <title>JSF 2.0 Hello World</title>
-        <h:outputStylesheet library="css" name="styles.css"/>
+       <!--  <h:outputStylesheet library="css" name="styles.css"/> -->
+       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+    	<div class="card">
     	<h:form id="formLogin">
-    		<h:panelGrid>
-    			<h:outputLabel value="Usuario" styleClass="textInput"></h:outputLabel>
-    	   		<h:inputText id="textUsuario" value="#{loginController.usuario}" required="true" 
-    	   			requiredMessage="El usuario es dato requerido"></h:inputText>
-    	   		
-    	   		<h:outputLabel value="Contraseña" styleClass="textInput"></h:outputLabel>
-    	   		<h:inputSecret id="textPassword" value="#{loginController.password}" required="true"
-    	   			requiredMessage="La contraseña es un dato requerido"></h:inputSecret>
-    	   	
-    	   		<h:commandButton value="Entrar" action="#{loginController.ingresar}"></h:commandButton>
-    	   	</h:panelGrid>
+    		<p:growl id="growl" />
+        	<p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+        	
+    		<p:panel id="pnlPanel" header="Inicio de sessión" style="text-align:center" >
+    			<p:graphicImage name="images/init_sesion.png" width="10%"/>
+    			<p:panelGrid id="pnlGrid"  columns="1" columnClasses="ui-g-12 ui-md-12, ui-g-12 ui-md-12" styleClass="ui-panelgrid-block" >
+    			
+	    			<p:outputLabel value="Usuario" styleClass="textInput" for="textUsuario" style="float:left"></p:outputLabel>
+	    	   		<p:inputText id="textUsuario" value="#{loginController.usuario}"  required="true" 
+	    	   			requiredMessage="El usuario es dato requerido"></p:inputText>
+	    	   		
+	    	   		<p:outputLabel value="Contraseña" styleClass="textInput" for="textPassword" style="float:left"></p:outputLabel>
+	    	   		<p:password id="textPassword" value="#{loginController.password}" required="true"
+	    	   			requiredMessage="La contraseña es un dato requerido"></p:password>
+	    	   		<p:outputLabel></p:outputLabel>
+	    	   		<p:commandButton value="Entrar" action="#{loginController.ingresar}" update="pnlGrid, growl"></p:commandButton>
+	    	   	
+	    	   	</p:panelGrid>
+    		</p:panel>
+    		
     	</h:form>
+    	</div>
     </h:body>
 </html>
